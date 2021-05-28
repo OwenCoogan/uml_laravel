@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contrats', function () {
+    return view('contrats');
+});
+
+Route::get('/contrat/{id}', [ContratController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
