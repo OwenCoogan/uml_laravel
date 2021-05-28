@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
 
-            Contract N*:{{ $contrat ->id}}
+            Contract N*:{{ $contrat ->id_contrat}}
         </h2>
 
     </x-slot>
