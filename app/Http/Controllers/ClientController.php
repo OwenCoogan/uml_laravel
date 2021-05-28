@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Vehicule;
-
-class VehiculeController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,10 +43,9 @@ class VehiculeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($primaryKey)
+    public function show($id)
     {
-        $vehicule =  Vehicule::find($primaryKey);
-        return view('vehicule', ['vehicule' => $vehicule]);
+        //
     }
 
     /**

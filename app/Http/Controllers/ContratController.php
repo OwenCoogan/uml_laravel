@@ -62,7 +62,7 @@ class ContratController extends Controller
         $contrat->contrat = $request->contrat;
         $contrat->created_at = $request->created_at;
         $contrat->save();
-        return redirect('/contracts');
+        return redirect('/contract/$id');
     }
 
     /**
