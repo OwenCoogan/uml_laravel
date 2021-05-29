@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Historique;
 
-class ClientController extends Controller
+class HistoriqueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,9 +44,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($primaryKey)
     {
-        //
+        $historique =  Historique::find($primaryKey);
+        return view('historique', ['historique' => $historique]);
     }
 
     /**
