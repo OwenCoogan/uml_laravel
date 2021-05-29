@@ -14,7 +14,10 @@ class CreateContratsTable extends Migration
     public function up()
     {
         Schema::create('contrats', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_contrat');
+            $table->integer('id_vehicule');
+            $table->integer('id_employe');
+            $table->integer('id_client');
             $table->timestamps();
         });
     }
