@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                @forEach($contrats as $contrat)
+                @forEach($employes as $employe)
                             <li>
-                                <a href="/contrat/{{$contrat->id_contrat}}">Contract N*:{{ $contrat ->id_contrat}}
-                                {{ $contrat->client }}</a>
+                                <a href="/employe/{{$employe->id_employe}}">Nom :{{ $employe ->nom}}
+                                    </a>
                                 <br/><br/>
                             </li>
                             <br>

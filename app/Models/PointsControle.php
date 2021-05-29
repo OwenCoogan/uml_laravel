@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PointsControle extends Model
 {
+    protected $primaryKey = 'id_controle';
     use HasFactory;
 }
