@@ -21,19 +21,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contrats', function () {
-    $contrats=Contrat::paginate(30);
-    return view('contrats', ['contrats' => $contrats]);
-});
-
-Route::get('/contrat/{id}', [ContratController::class, 'show']);
-
-Route::get('/vehicule/{id}', [VehiculeController::class, 'show']);
-
-Route::get('/historique/{id}', [HistoriqueController::class, 'show']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/contrats', function () {
+    $contrats=Contrat::paginate(30);
+    return view('contrats', ['contrats' => $contrats]);
+})->middleware(['auth'])->name('contrats');
+
+Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['auth'])->name('contrat');
+
+Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['auth'])->name('vehicule');
+
+Route::get('/historique/{id}', [HistoriqueController::class, 'show']);
 
 require __DIR__.'/auth.php';
