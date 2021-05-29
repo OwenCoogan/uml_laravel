@@ -12,7 +12,7 @@
                 @forEach($contrats as $contrat)
                             <li>
                                 <a href="/contrat/{{$contrat->id_contrat}}">Contract N*:{{ $contrat ->id_contrat}}
-                                {{$contrat->client->nom}}</a>
+                                {{ $contrat->client }} </a>
                                 <br/><br/>
                             </li>
                             <br>
