@@ -35,7 +35,13 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contrat = new Contrat;
+        $contrat->id_vehicule = $request->id_vehicule;
+        $contrat->id_employe = $request->id_employe;
+        $contrat->id_client = $request->id_client;
+        $contrat->save();
+
+        return redirect()->route('contrats');
     }
 
     /**
