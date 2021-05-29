@@ -30,6 +30,8 @@ Route::get('/contrat/{id}', [ContratController::class, 'show']);
 
 Route::get('/vehicule/{id}', [VehiculeController::class, 'show']);
 
+Route::get('/historique/{id}', [HistoriqueController::class, 'show']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
