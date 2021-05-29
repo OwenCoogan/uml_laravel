@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Employe;
 
-class ClientController extends Controller
+class EmployeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,9 +44,10 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($primaryKey)
     {
-        //
+        $employe =  Employe::find($primaryKey);
+        return view('employe', ['employe' => $employe]);
     }
 
     /**
@@ -57,7 +58,11 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employe =  Employe::find($id);
+        $employe->employe = $request->employe;
+        $employe->created_at = $request->created_at;
+        $employe->save();
+        return redirect('/employe/$id');
     }
 
     /**

@@ -34,6 +34,6 @@ Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['au
 
 Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['auth'])->name('vehicule');
 
-
+Route::get('/historique/{id}', [HistoriqueController::class, 'show']);
 
 require __DIR__.'/auth.php';
