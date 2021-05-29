@@ -5,6 +5,9 @@ use App\Http\Controllers\ContratController;
 use App\Http\Controllers\VehiculeController;
 
 use App\Models\Contrat;
+use App\Models\Vehicule;
+use App\Models\Employe;
+use App\Models\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +35,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/contrats', function () {
     $contrats=Contrat::paginate(30);
-    return view('contrats', ['contrats' => $contrats]);
+    $vehicules=Vehicule::All();
+    $employes=Employe::All();
+    $clients=Client::All();
+    return view('contrats', ['contrats' => $contrats, 'vehicules' => $vehicules, 'employes' => $employes, 'clients' => $clients]);
 })->middleware(['auth'])->name('contrats');
 
 Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['auth'])->name('contrat');
 
-Route::post('/storeContrat', [ContratController::class, 'store']);
+Route::post('/storeContrat', [ContratController::class, 'store'])->middleware(['auth'])->name('storeContrat');
 
 
 /***************************
@@ -45,7 +51,7 @@ Route::post('/storeContrat', [ContratController::class, 'store']);
 ***************************/
 
 Route::get('/vehicules', function () {
-    $contrats=Contrat::paginate(30);
+    $vehicules=Vehicule::paginate(30);
     return view('vehicules', ['vehicules' => $vehicules]);
 })->middleware(['auth'])->name('vehicules');
 
@@ -57,7 +63,7 @@ Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['
 ***************************/
 
 Route::get('/clients', function () {
-    $contrats=Contrat::paginate(30);
+    $clients=Client::paginate(30);
     return view('clients', ['clients' => $clients]);
 })->middleware(['auth'])->name('clients');
 

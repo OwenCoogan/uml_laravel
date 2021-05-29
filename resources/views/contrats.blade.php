@@ -15,14 +15,29 @@
                 <div class="dashboard__form-add-item hidden p-6 bg-white border-b border-gray-200">
                     {!! Form::open(['url' => 'storeContrat']) !!}
 
-                        {!! Form::label('id_vehicule', 'Id Véhicule') !!}
-                        {!! Form::number('id_vehicule') !!}
+                        {!! Form::label('id_vehicule', 'Véhicule') !!}
+                        <select id="id_vehicule" name="id_vehicule">
+                            <option value="" selected="selected">Choisir un véhicule</option>
+                            @forEach($vehicules as $vehicule)
+                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                            @endforeach
+                        </select>
                         <br><br>
-                        {!! Form::label('id_employe', 'Id Employé') !!}
-                        {!! Form::number('id_employe') !!}
+                        {!! Form::label('id_employe', 'Employé') !!}
+                        <select id="id_employe" name="id_employe">
+                            <option value="" selected="selected">Choisir un employé</option>
+                            @forEach($employes as $employe)
+                                <option value="{{$employe->id_employe}}">{{ $employe->nom }}</option>
+                            @endforeach
+                        </select>
                         <br><br>
-                        {!! Form::label('id_client', 'Id Client') !!}
-                        {!! Form::number('id_client') !!}
+                        {!! Form::label('id_client', 'Client') !!}
+                        <select id="id_client" name="id_client">
+                            <option value="" selected="selected">Choisir un client</option>
+                            @forEach($clients as $client)
+                                <option value="{{$client->id_client}}">{{ $client->nom }}</option>
+                            @endforeach
+                        </select>
                         <br><br>
                         {!! Form::submit('Nouveau Contrat') !!}
 
