@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContratController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VehiculeController;
 
 use App\Models\Contrat;
+use App\Models\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,14 @@ Route::get('/contrats', function () {
     return view('contrats', ['contrats' => $contrats]);
 });
 
+Route::get('/clients', function () {
+    $clients=Client::paginate(30);
+    return view('clients', ['clients' => $clients]);
+});
+
 Route::get('/contrat/{id}', [ContratController::class, 'show']);
+
+Route::get('/client/{id}', [ClientController::class, 'show']);
 
 Route::get('/vehicule/{id}', [VehiculeController::class, 'show']);
 
