@@ -43,6 +43,10 @@ class ContratController extends Controller
         $contrat->id_vehicule = $request->id_vehicule;
         $contrat->id_employe = $request->id_employe;
         $contrat->id_client = $request->id_client;
+        $contrat->km_avant = $request->km_avant;
+        $contrat->km_apres = $request->km_apres;
+        $contrat->date_debut = $request->date_debut;
+        $contrat->date_fin = $request->date_fin;
         $contrat->save();
 
         return redirect()->route('contrats');
@@ -88,6 +92,10 @@ class ContratController extends Controller
         $contrat->id_vehicule = $request->id_vehicule;
         $contrat->id_employe = $request->id_employe;
         $contrat->id_client = $request->id_client;
+        $contrat->km_avant = $request->km_avant;
+        $contrat->km_apres = $request->km_apres;
+        $contrat->date_debut = $request->date_debut;
+        $contrat->date_fin = $request->date_fin;
         $contrat->save();
 
         return redirect()->route('contrats');

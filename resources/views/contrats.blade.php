@@ -15,14 +15,7 @@
                 <div class="dashboard__form-add-item hidden p-6 bg-white border-b border-gray-200">
                     {!! Form::open(['url' => 'storeContrat']) !!}
 
-                        {!! Form::label('id_vehicule', 'Véhicule') !!}
-                        <select id="id_vehicule" name="id_vehicule">
-                            <option value="" selected="selected">Choisir un véhicule</option>
-                            @forEach($vehicules as $vehicule)
-                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
-                            @endforeach
-                        </select>
-                        <br><br>
+                        
                         {!! Form::label('id_employe', 'Employé') !!}
                         <select id="id_employe" name="id_employe">
                             <option value="" selected="selected">Choisir un employé</option>
@@ -38,6 +31,26 @@
                                 <option value="{{$client->id_client}}">{{ $client->nom }}</option>
                             @endforeach
                         </select>
+                        <br><br>
+                        {!! Form::label('id_vehicule', 'Véhicule') !!}
+                        <select id="id_vehicule" name="id_vehicule">
+                            <option value="" selected="selected">Choisir un véhicule</option>
+                            @forEach($vehicules as $vehicule)
+                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                            @endforeach
+                        </select>
+                        <br><br>
+                        {!! Form::label('km_avant', 'Km du véhicule avant') !!}
+                        {!! Form::number('km_avant', '0') !!}
+                        <br><br>
+                        {!! Form::label('km_apres', 'Km du véhicule après') !!}
+                        {!! Form::number('km_apres', '0') !!}
+                        <br><br>
+                        {!! Form::label('date_debut', 'Date début du contrat') !!}
+                        {!! Form::date('date_debut', \Carbon\Carbon::now()) !!}
+                        <br><br>
+                        {!! Form::label('date_fin', 'Date fin du contrat') !!}
+                        {!! Form::date('date_fin', \Carbon\Carbon::now()) !!}
                         <br><br>
                         {!! Form::submit('Nouveau Contrat') !!}
 
