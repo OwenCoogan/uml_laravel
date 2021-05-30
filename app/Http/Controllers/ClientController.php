@@ -35,7 +35,14 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client;
+        $client->nom = $request->nom;
+        $client->prenom = $request->prenom;
+        $client->date_naissance = $request->date_naissance;
+        $client->numero_permis = $request->numero_permis;
+        $client->save();
+
+        return redirect()->route('clients');
     }
 
     /**
@@ -58,7 +65,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        return view('editclient', ['client' => $client]);
     }
 
     /**
@@ -70,7 +78,14 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = client::find($id);
+        $client->nom = $request->nom;
+        $client->prenom = $request->prenom;
+        $client->date_naissance = $request->date_naissance;
+        $client->numero_permis = $request->numero_permis;
+        $client->save();
+
+        return redirect()->route('clients');
     }
 
     /**
@@ -81,6 +96,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+
+        return redirect()->route('clients');
     }
 }

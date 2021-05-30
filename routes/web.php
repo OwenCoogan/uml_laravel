@@ -42,24 +42,21 @@ Route::get('/contrats', function () {
     return view('contrats', ['contrats' => $contrats]);
 })->middleware(['auth'])->name('contrats');
 
-Route::get('/clients', function () {
-    $clients=Client::paginate(30);
-    return view('clients', ['clients' => $clients]);
-});
+Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['auth'])->name('contrat');
+
+Route::get('/contrat/{id}/edit', [ContratController::class, 'edit'])->middleware(['auth'])->name('contrat');
+Route::post('/storeContrat', [ContratController::class, 'store']);
+
+/***************************
+// Routes > Employes
+***************************/
 
 Route::get('/employes', function () {
     $employes=Employe::paginate(30);
     return view('employes', ['employes' => $employes]);
 });
 
-Route::get('/client/{id}', [ClientController::class, 'show']);
-
 Route::get('/employe/{id}', [EmployeController::class, 'show']);
-
-Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['auth'])->name('contrat');
-
-Route::get('/contrat/{id}/edit', [ContratController::class, 'edit'])->middleware(['auth'])->name('contrat');
-Route::post('/storeContrat', [ContratController::class, 'store']);
 
 
 /***************************
@@ -67,7 +64,7 @@ Route::post('/storeContrat', [ContratController::class, 'store']);
 ***************************/
 
 Route::get('/vehicules', function () {
-    $contrats=Contrat::paginate(30);
+    $vehicules=Vehicule::paginate(30);
     return view('vehicules', ['vehicules' => $vehicules]);
 })->middleware(['auth'])->name('vehicules');
 
@@ -79,10 +76,19 @@ Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['
 ***************************/
 
 Route::get('/clients', function () {
-    $contrats=Contrat::paginate(30);
+    $clients=Client::paginate(30);
     return view('clients', ['clients' => $clients]);
 })->middleware(['auth'])->name('clients');
 
+Route::get('/client/{id}', [ClientController::class, 'show']);
+
+Route::get('/deleteClient/{id}', [ClientController::class, 'destroy']);
+
+Route::get('/editClient/{id}', [ClientController::class, 'edit'])->name('editClient');
+
+Route::post('/updateClient/{id}', [ClientController::class, 'update'])->name('updateClient');
+
+Route::post('/storeClient', [ClientController::class, 'store']);
 
 /***************************
 // Routes > Historiques
