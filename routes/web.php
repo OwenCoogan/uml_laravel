@@ -2,12 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContratController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VehiculeController;
+use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\EmployeController;
 
 use App\Models\Contrat;
-use App\Models\Vehicule;
-use App\Models\Employe;
 use App\Models\Client;
+use App\Models\Vehicule;
+use App\Models\Historique;
+use App\Models\Employe;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +59,17 @@ Route::post('/updateContrat/{id}', [ContratController::class, 'update'])->name('
 // Delete
 Route::get('/deleteContrat/{id}', [ContratController::class, 'destroy']);
 
+/***************************
+// Routes > Employes
+***************************/
+
+Route::get('/employes', function () {
+    $employes=Employe::paginate(30);
+    return view('employes', ['employes' => $employes]);
+});
+
+Route::get('/employe/{id}', [EmployeController::class, 'show']);
+
 
 /***************************
 // Routes > Vehicules
@@ -77,6 +92,15 @@ Route::get('/clients', function () {
     return view('clients', ['clients' => $clients]);
 })->middleware(['auth'])->name('clients');
 
+Route::get('/client/{id}', [ClientController::class, 'show']);
+
+Route::get('/deleteClient/{id}', [ClientController::class, 'destroy']);
+
+Route::get('/editClient/{id}', [ClientController::class, 'edit'])->name('editClient');
+
+Route::post('/updateClient/{id}', [ClientController::class, 'update'])->name('updateClient');
+
+Route::post('/storeClient', [ClientController::class, 'store']);
 
 /***************************
 // Routes > Historiques
