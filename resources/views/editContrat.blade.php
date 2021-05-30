@@ -7,6 +7,21 @@
 
     <div class="py-12">
 
+        @if ($errors->any())
+            <div class="mb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-red-200 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 border-b border-gray-200">
+                        <p class="font-bold">Le contrat n'a pas été créé car les champs n'étaient pas correctement renseignés :</p>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="dashboard__wrap-edit-item bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="dashboard__form-edit-item p-6 bg-white border-b border-gray-200">

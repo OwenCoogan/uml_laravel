@@ -39,6 +39,12 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'id_vehicule' => 'required',
+            'id_employe' => 'required',
+            'id_client' => 'required',
+        ]);
+
         $contrat = new Contrat;
         $contrat->id_vehicule = $request->id_vehicule;
         $contrat->id_employe = $request->id_employe;
@@ -88,6 +94,12 @@ class ContratController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'id_vehicule' => 'required',
+            'id_employe' => 'required',
+            'id_client' => 'required',
+        ]);
+
         $contrat = Contrat::find($id);
         $contrat->id_vehicule = $request->id_vehicule;
         $contrat->id_employe = $request->id_employe;
