@@ -18,6 +18,10 @@ class CreateContratsTable extends Migration
             $table->integer('id_vehicule');
             $table->integer('id_employe');
             $table->integer('id_client');
+            $table->timestamp('date_debut')->nullable();
+            $table->timestamp('date_fin')->nullable();
+            $table->integer('km_avant')->nullable();
+            $table->integer('km_apres')->nullable();
             $table->timestamps();
         });
     }
