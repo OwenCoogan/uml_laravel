@@ -33,6 +33,7 @@ Route::get('/dashboard', function () {
 // Routes > Contrats
 ***************************/
 
+// Read All
 Route::get('/contrats', function () {
     $contrats=Contrat::paginate(30);
     $vehicules=Vehicule::All();
@@ -41,9 +42,18 @@ Route::get('/contrats', function () {
     return view('contrats', ['contrats' => $contrats, 'vehicules' => $vehicules, 'employes' => $employes, 'clients' => $clients]);
 })->middleware(['auth'])->name('contrats');
 
+// Read One
 Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['auth'])->name('contrat');
 
+// Create
 Route::post('/storeContrat', [ContratController::class, 'store'])->middleware(['auth'])->name('storeContrat');
+
+// Update
+Route::get('/editContrat/{id}', [ContratController::class, 'edit'])->name('editContrat');
+Route::post('/updateContrat/{id}', [ContratController::class, 'update'])->name('updateContrat');
+
+// Delete
+Route::get('/deleteContrat/{id}', [ContratController::class, 'destroy']);
 
 
 /***************************

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contrat;
 
+use App\Models\Vehicule;
+use App\Models\Employe;
+use App\Models\Client;
+
 class ContratController extends Controller
 {
     /**
@@ -64,11 +68,11 @@ class ContratController extends Controller
      */
     public function edit($id)
     {
-        $contrat =  Contrat::find($id);
-        $contrat->contrat = $request->contrat;
-        $contrat->created_at = $request->created_at;
-        $contrat->save();
-        return redirect('/contract/$id');
+        $contrat = Contrat::find($id);
+        $vehicules=Vehicule::All();
+        $employes=Employe::All();
+        $clients=Client::All();
+        return view('editContrat', ['contrat' => $contrat, 'vehicules' => $vehicules, 'employes' => $employes, 'clients' => $clients]);
     }
 
     /**
@@ -80,7 +84,13 @@ class ContratController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contrat = Contrat::find($id);
+        $contrat->id_vehicule = $request->id_vehicule;
+        $contrat->id_employe = $request->id_employe;
+        $contrat->id_client = $request->id_client;
+        $contrat->save();
+
+        return redirect()->route('contrats');
     }
 
     /**
@@ -91,6 +101,9 @@ class ContratController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contrat = Contrat::find($id);
+        $contrat->delete();
+
+        return redirect()->route('contrats');
     }
 }

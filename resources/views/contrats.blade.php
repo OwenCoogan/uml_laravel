@@ -51,9 +51,23 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @forEach($contrats as $contrat)
                         <li>
-                            <a href="/contrat/{{$contrat->id_contrat}}">Contract N*:{{ $contrat ->id_contrat}}
-                            {{ $contrat->client }} </a>
-                            <br/><br/>
+                            <a href="/contrat/{{$contrat->id_contrat}}" class="underline font-bold">Contrat N° {{ $contrat->id_contrat}}</a>
+                            <br>
+                            <p class="font-bold mt-1">Aperçu du contrat</p>
+                            @if (!empty($contrat->vehicule))
+                            <p>Véhicule : {{ $contrat->vehicule->nom }} / {{ $contrat->vehicule->immatriculation }}</p>
+                            @endif
+                            @if (!empty($contrat->client))
+                            <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
+                            @endif
+                            @if (!empty($contrat->employe))
+                            <p>Employé : {{ $contrat->employe->nom }} ({{ $contrat->employe->fonction }})</p>
+                            @endif
+                            <div class="inline-flex mt-2">
+                                <a class="py-2 px-4 text-white bg-yellow-500 rounded" href="/editContrat/{{$contrat->id_contrat}}">Modifier</a>
+                                <a class="py-2 px-4 text-white bg-red-600 rounded ml-2" href="/deleteContrat/{{$contrat->id_contrat}}">Supprimer</a>
+                            </div>
+                            <br>
                         </li>
                         <br>
                     @endforeach
