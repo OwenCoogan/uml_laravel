@@ -79,30 +79,32 @@
         <div class="mt-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @forEach($contrats as $contrat)
-                        <li>
-                            <a href="/contrat/{{$contrat->id_contrat}}" class="underline font-bold">Contrat N° {{ $contrat->id_contrat}}</a>
+                    <ul>
+                        @forEach($contrats as $contrat)
+                            <li>
+                                <a href="/contrat/{{$contrat->id_contrat}}" class="underline font-bold">Contrat N° {{ $contrat->id_contrat}}</a>
+                                <br>
+                                <p class="font-bold mt-1">Aperçu du contrat</p>
+                                @if (!empty($contrat->employe))
+                                    <p>Employé : {{ $contrat->employe->nom }} ({{ $contrat->employe->fonction }})</p>
+                                @endif
+                                @if (!empty($contrat->client))
+                                    <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
+                                @endif
+                                @if (!empty($contrat->vehicule))
+                                    <p>Véhicule : {{ $contrat->vehicule->nom }} / {{ $contrat->vehicule->immatriculation }} / Km avant : {{ $contrat->km_avant }} / Km après : {{ $contrat->km_apres }}</p>
+                                @endif
+                                <p><span class="font-semibold">Date début du contrat :</span> {{ $contrat->date_debut }} </p>
+                                <p><span class="font-semibold">Date fin du contrat :</span> {{ $contrat->date_fin }} </p>
+                                <div class="inline-flex mt-2">
+                                    <a class="py-2 px-4 text-white bg-yellow-500 rounded" href="/editContrat/{{$contrat->id_contrat}}">Modifier</a>
+                                    <a class="py-2 px-4 text-white bg-red-600 rounded ml-2" href="/deleteContrat/{{$contrat->id_contrat}}">Supprimer</a>
+                                </div>
+                                <br>
+                            </li>
                             <br>
-                            <p class="font-bold mt-1">Aperçu du contrat</p>
-                            @if (!empty($contrat->employe))
-                                <p>Employé : {{ $contrat->employe->nom }} ({{ $contrat->employe->fonction }})</p>
-                            @endif
-                            @if (!empty($contrat->client))
-                                <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
-                            @endif
-                            @if (!empty($contrat->vehicule))
-                                <p>Véhicule : {{ $contrat->vehicule->nom }} / {{ $contrat->vehicule->immatriculation }} / Km avant : {{ $contrat->km_avant }} / Km après : {{ $contrat->km_apres }}</p>
-                            @endif
-                            <p><span class="font-semibold">Date début du contrat :</span> {{ $contrat->date_debut }} </p>
-                            <p><span class="font-semibold">Date fin du contrat :</span> {{ $contrat->date_fin }} </p>
-                            <div class="inline-flex mt-2">
-                                <a class="py-2 px-4 text-white bg-yellow-500 rounded" href="/editContrat/{{$contrat->id_contrat}}">Modifier</a>
-                                <a class="py-2 px-4 text-white bg-red-600 rounded ml-2" href="/deleteContrat/{{$contrat->id_contrat}}">Supprimer</a>
-                            </div>
-                            <br>
-                        </li>
-                        <br>
-                    @endforeach
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
