@@ -11,7 +11,8 @@
             <div class="mb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-red-200 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 border-b border-gray-200">
-                        <p class="font-bold">Le contrat n'a pas été créé car les champs n'étaient pas correctement renseignés :</p>
+
+                        <p class="font-bold">Le contrat n'a pas été modifié car les champs n'étaient pas correctement renseignés :</p>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -65,10 +66,10 @@
                         </select>
                         <br><br>
                         {!! Form::label('km_avant', 'Km du véhicule avant') !!}
-                        {!! Form::number('km_avant', '{{$contrat->km_avant}}') !!}
+                        {!! Form::number('km_avant', $contrat->km_avant) !!}
                         <br><br>
                         {!! Form::label('km_apres', 'Km du véhicule après') !!}
-                        {!! Form::number('km_apres', '{{$contrat->km_apres}}') !!}
+                        {!! Form::number('km_apres', $contrat->km_apres) !!}
                         <br><br>
                         {!! Form::label('date_debut', 'Date début du contrat') !!}
                         {!! Form::date('date_debut', \Carbon\Carbon::parse($contrat->date_debut)->format('Y-m-d')) !!}

@@ -53,33 +53,37 @@ Route::get('/contrat/{id}', [ContratController::class, 'show'])->middleware(['au
 Route::post('/storeContrat', [ContratController::class, 'store'])->middleware(['auth'])->name('storeContrat');
 
 // Update
-Route::get('/editContrat/{id}', [ContratController::class, 'edit'])->name('editContrat');
-Route::post('/updateContrat/{id}', [ContratController::class, 'update'])->name('updateContrat');
+Route::get('/editContrat/{id}', [ContratController::class, 'edit'])->middleware(['auth'])->name('editContrat');
+Route::post('/updateContrat/{id}', [ContratController::class, 'update'])->middleware(['auth'])->name('updateContrat');
 
 // Delete
-Route::get('/deleteContrat/{id}', [ContratController::class, 'destroy']);
+Route::get('/deleteContrat/{id}', [ContratController::class, 'destroy'])->middleware(['auth'])->name('deleteContrat');
 
 /***************************
 // Routes > Employes
 ***************************/
 
+// Read All
 Route::get('/employes', function () {
     $employes=Employe::paginate(30);
     return view('employes', ['employes' => $employes]);
-});
+})->middleware(['auth'])->name('employes');
 
-Route::get('/employe/{id}', [EmployeController::class, 'show']);
+// Read One
+Route::get('/employe/{id}', [EmployeController::class, 'show'])->middleware(['auth'])->name('employe');
 
 
 /***************************
 // Routes > Vehicules
 ***************************/
 
+// Read All
 Route::get('/vehicules', function () {
     $vehicules=Vehicule::paginate(30);
     return view('vehicules', ['vehicules' => $vehicules]);
 })->middleware(['auth'])->name('vehicules');
 
+// Read One
 Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['auth'])->name('vehicule');
 
 
@@ -87,20 +91,25 @@ Route::get('/vehicule/{id}', [VehiculeController::class, 'show'])->middleware(['
 // Routes > Clients
 ***************************/
 
+// Read All
 Route::get('/clients', function () {
     $clients=Client::paginate(30);
     return view('clients', ['clients' => $clients]);
 })->middleware(['auth'])->name('clients');
 
-Route::get('/client/{id}', [ClientController::class, 'show']);
+// Read One
+Route::get('/client/{id}', [ClientController::class, 'show'])->middleware(['auth'])->name('client');
 
-Route::get('/deleteClient/{id}', [ClientController::class, 'destroy']);
+// Create
+Route::post('/storeClient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeClient');
 
-Route::get('/editClient/{id}', [ClientController::class, 'edit'])->name('editClient');
+// Update
+Route::get('/editClient/{id}', [ClientController::class, 'edit'])->middleware(['auth'])->name('editClient');
+Route::post('/updateClient/{id}', [ClientController::class, 'update'])->middleware(['auth'])->name('updateClient');
 
-Route::post('/updateClient/{id}', [ClientController::class, 'update'])->name('updateClient');
+// Delete
+Route::get('/deleteClient/{id}', [ClientController::class, 'destroy'])->middleware(['auth'])->name('deleteClient');;
 
-Route::post('/storeClient', [ClientController::class, 'store']);
 
 /***************************
 // Routes > Historiques
