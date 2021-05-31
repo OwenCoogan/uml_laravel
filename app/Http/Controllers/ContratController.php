@@ -8,6 +8,7 @@ use App\Models\Contrat;
 use App\Models\Vehicule;
 use App\Models\Employe;
 use App\Models\Client;
+use App\Models\ContratToVehicule;
 
 class ContratController extends Controller
 {
@@ -46,7 +47,7 @@ class ContratController extends Controller
         ]);
 
         $contrat = new Contrat;
-        $contrat->id_vehicule = $request->id_vehicule;
+        // $contrat->id_vehicule = $request->id_vehicule;
         $contrat->id_employe = $request->id_employe;
         $contrat->id_client = $request->id_client;
         $contrat->km_avant = $request->km_avant;
@@ -54,6 +55,11 @@ class ContratController extends Controller
         $contrat->date_debut = $request->date_debut;
         $contrat->date_fin = $request->date_fin;
         $contrat->save();
+
+        $contratToVehicule = new ContratToVehicule;
+        $contratToVehicule->id_contrat = $contrat->id_contrat;
+        $contratToVehicule->id_vehicule = $request->id_vehicule;
+        $contratToVehicule->save();
 
         return redirect()->route('contrats');
     }
