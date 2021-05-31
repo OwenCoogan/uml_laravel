@@ -19,6 +19,10 @@ class Contrat extends Model
     public function client(){
         return $this->belongsTo(Client::class , 'id_client');
     }
+    public function pointControle(){
+        return $this->belongsTo(PointControle::class , 'id_controle');
+    }
+
 
     use HasFactory;
 }

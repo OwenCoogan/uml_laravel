@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PointsControle extends Model
+class PointControle extends Model
 {
     protected $primaryKey = 'id_controle';
+    public function employe(){
+        return $this->belongsTo(Employe::class , 'id_employe');
+    }
+
     use HasFactory;
 }

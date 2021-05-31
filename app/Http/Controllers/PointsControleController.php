@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PointsControle;
 
-class PointsControleController extends Controller
+class PointControleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,8 +46,8 @@ class PointsControleController extends Controller
      */
     public function show($primaryKey)
     {
-        $pointsControle =  PointsControle::find($primaryKey);
-        return view('pointsControle', ['pointsControle' => $pointsControle]);
+        $pointControle =  PointControle::find($primaryKey);
+        return view('pointControle', ['pointControle' => $pointControle]);
     }
 
     /**

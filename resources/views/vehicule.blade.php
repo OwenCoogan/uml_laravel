@@ -15,6 +15,14 @@
             </div>
         </div>
     </div>
+    <h2><b>Point De controle:</b></h2>
+    <ul>
+
+    <h3>{{ $vehicule->pointControle ->controle_type}}</h3><br>
+    <p>{{ $vehicule->pointControle ->controle_description}}</p><br>
+    <p>Employé en charge du contrôle : {{ $vehicule->pointControle ->employe ->nom }}
+
+    </ul>
 </x-app-layout>
 
 
