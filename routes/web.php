@@ -59,7 +59,6 @@ Route::post('/updateContrat/{id}', [ContratController::class, 'update'])->middle
 // Delete
 Route::get('/deleteContrat/{id}', [ContratController::class, 'destroy'])->middleware(['auth'])->name('deleteContrat');
 
-
 /***************************
 // Routes > Employes
 ***************************/

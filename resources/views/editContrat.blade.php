@@ -11,6 +11,7 @@
             <div class="mb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-red-200 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 border-b border-gray-200">
+
                         <p class="font-bold">Le contrat n'a pas été modifié car les champs n'étaient pas correctement renseignés :</p>
                         <ul>
                             @foreach ($errors->all() as $error)
