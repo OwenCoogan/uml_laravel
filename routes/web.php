@@ -6,12 +6,14 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VehiculeController;
 use App\Http\Controllers\HistoriqueController;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\ContratToVehiculeController;
 
 use App\Models\Contrat;
 use App\Models\Client;
 use App\Models\Vehicule;
 use App\Models\Historique;
 use App\Models\Employe;
+use App\Models\ContratToVehicule;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,8 @@ Route::get('/contrats', function () {
     $vehicules=Vehicule::All();
     $employes=Employe::All();
     $clients=Client::All();
-    return view('contrats', ['contrats' => $contrats, 'vehicules' => $vehicules, 'employes' => $employes, 'clients' => $clients]);
+    $contratToVehicules=ContratToVehicule::All();
+    return view('contrats', ['contrats' => $contrats, 'vehicules' => $vehicules, 'employes' => $employes, 'clients' => $clients, 'contratToVehicules' => $contratToVehicules]);
 })->middleware(['auth'])->name('contrats');
 
 // Read One
