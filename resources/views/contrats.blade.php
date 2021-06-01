@@ -92,6 +92,7 @@
                                 @if (!empty($contrat->client))
                                     <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
                                 @endif
+                                <!-- Faire l'affichage des véhicules grâce à la table contrat_to_vehicules -->
                                 @if (!empty($contrat->vehicule))
                                     <p>Véhicule : {{ $contrat->vehicule->nom }} / {{ $contrat->vehicule->immatriculation }} / Km avant : {{ $contrat->km_avant }} / Km après : {{ $contrat->km_apres }}</p>
                                 @endif
