@@ -35,7 +35,21 @@ class PointControleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id_vehicule' => 'required',
+            'id_employe' => 'required',
+            'controle_type' => 'required',
+            'controle_description' => 'required'
+        ]);
+
+        $pointControle = new PointsControle;
+        $pointControle->id_vehicule = $request->id_vehicule;
+        $pointControle->id_employe = $request->id_employe;
+        $pointControle->controle_type = $request->controle_type;
+        $pointControle->controle_description = $request->controle_description;
+        $pointControle->save();
+
+        return redirect()->route('vehicules');
     }
 
     /**
@@ -46,7 +60,7 @@ class PointControleController extends Controller
      */
     public function show($primaryKey)
     {
-        $pointControle =  PointControle::find($primaryKey);
+        $pointControle =  PointsControle::find($primaryKey);
         return view('pointControle', ['pointControle' => $pointControle]);
     }
 

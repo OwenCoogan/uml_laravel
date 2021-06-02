@@ -9,7 +9,7 @@ class Vehicule extends Model
 {
     protected $primaryKey = 'id_vehicule';
     public function pointControle(){
-        return $this->belongsTo(PointControle::class , 'id_controle');
+        return $this->belongsTo(PointControle::class , 'id_vehicule');
     }
     use HasFactory;
 }
