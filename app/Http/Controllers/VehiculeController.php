@@ -36,7 +36,19 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'required',
+            'immatriculation' => 'required',
+            'image' => 'active_url',
+        ]);
+
+        $vehicule = new Vehicule;
+        $vehicule->nom = $request->nom;
+        $vehicule->immatriculation = $request->immatriculation;
+        $vehicule->image = $request->image;
+        $vehicule->save();
+
+        return redirect()->route('vehicules');
     }
 
     /**
@@ -59,8 +71,12 @@ class VehiculeController extends Controller
      */
     public function edit($primaryKey)
     {
+<<<<<<< HEAD
         //
         $vehicule = Vehicule::find($primaryKey);
+=======
+        $vehicule =  Vehicule::find($id);
+>>>>>>> master
         return view('editVehicule', ['vehicule' => $vehicule]);
     }
 
@@ -75,14 +91,14 @@ class VehiculeController extends Controller
     {
         $validated = $request->validate([
             'nom' => 'required',
-            'image' => 'required',
-            'id_controle' => 'required'
+            'immatriculation' => 'required',
+            'image' => 'active_url',
         ]);
 
-        $vehicule = vehicule::find($id);
+        $vehicule = Vehicule::find($id);
         $vehicule->nom = $request->nom;
+        $vehicule->immatriculation = $request->immatriculation;
         $vehicule->image = $request->image;
-        $vehicule->id_controle = $request->id_controle;
         $vehicule->save();
 
         return redirect()->route('vehicules');
@@ -96,8 +112,7 @@ class VehiculeController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $vehicule = Vehicule::find($primaryKey);
+        $vehicule = Vehicule::find($id);
         $vehicule->delete();
 
         return redirect()->route('vehicules');
