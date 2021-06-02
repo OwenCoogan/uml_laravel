@@ -19,12 +19,12 @@
                     @endif
                     
                     @php
-                        $nbVehicule = 0
+                        $nbVehicule = 0;
                     @endphp
                     @foreach ($contratToVehicules as $contratToVehicule)
                         @if ($contratToVehicule->id_contrat === $contrat->id_contrat )
                             @php
-                                $nbVehicule++
+                                $nbVehicule++;
                             @endphp
                             <p>Véhicule {{ $nbVehicule }} : <a href="/vehicule/{{$contratToVehicule->vehicule->id_vehicule}}">{{$contratToVehicule->vehicule->nom }}</a> / {{ $contratToVehicule->vehicule->immatriculation }}</p>
                         @endif
