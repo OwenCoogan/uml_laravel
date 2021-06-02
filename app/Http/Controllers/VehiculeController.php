@@ -71,12 +71,7 @@ class VehiculeController extends Controller
      */
     public function edit($primaryKey)
     {
-<<<<<<< HEAD
-        //
-        $vehicule = Vehicule::find($primaryKey);
-=======
         $vehicule =  Vehicule::find($id);
->>>>>>> master
         return view('editVehicule', ['vehicule' => $vehicule]);
     }
 
