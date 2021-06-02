@@ -3,7 +3,7 @@
         <a class="py-2 px-4 rounded border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out" href="{{ url()->previous() }}">Retours</a>
         <br><br>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Modifier le Client N°') }} {{$client->id_client}}
+            {{ __('Modifier le Véhicule N°') }} {{$vehicule->id_vehicule}}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
             <div class="mb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-red-200 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 border-b border-gray-200">
-                        <p class="font-bold">Le client n'a pas été modifié car les champs n'étaient pas correctement renseignés :</p>
+                        <p class="font-bold">Le véhicule n'a pas été modifié car les champs n'étaient pas correctement renseignés :</p>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -27,21 +27,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="dashboard__wrap-edit-item bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="dashboard__form-edit-item p-6 bg-white border-b border-gray-200">
-                    {!! Form::open(['url' => 'updateClient/'.$client->id_client]) !!}
+                    {!! Form::open(['url' => 'updateVehicule/'.$vehicule->id_vehicule]) !!}
 
                         {!! Form::label('nom', 'Nom') !!}
-                        {!! Form::text('nom', $client->nom) !!}
+                        {!! Form::text('nom', $vehicule->nom) !!}
                         <br><br>
-                        {!! Form::label('prenom', 'Prénom') !!}
-                        {!! Form::text('prenom', $client->prenom) !!}
+                        {!! Form::label('immatriculation', 'Immatriculation') !!}
+                        {!! Form::text('immatriculation', $vehicule->immatriculation) !!}
                         <br><br>
-                        {!! Form::label('date_naissance', 'Date de naissance') !!}
-                        {!! Form::date('date_naissance', \Carbon\Carbon::parse($client->date_naissance)->format('Y-m-d')) !!}
+                        {!! Form::label('image', 'Image') !!}
+                        {!! Form::text('image', $vehicule->image) !!}
                         <br><br>
-                        {!! Form::label('numero_permis', 'N° de permis') !!}
-                        {!! Form::number('numero_permis', $client->numero_permis) !!}
-                        <br><br>
-                        {!! Form::submit('Modifier le Client') !!}
+                        {!! Form::submit('Modifier le Vehicule') !!}
 
                     {!! Form::close() !!}
                 </div>

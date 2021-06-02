@@ -1,7 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
+        <a class="py-2 px-4 rounded border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out" href="{{ url()->previous() }}">Retours</a>
+        <br><br>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Modifier un Contrat N°') }} {{$contrat->id_contrat}}
+            {{ __('Modifier le Contrat N°') }} {{$contrat->id_contrat}}
         </h2>
     </x-slot>
 
@@ -53,7 +55,7 @@
                             @endforeach
                         </select>
                         <br><br>
-                        {!! Form::label('id_vehicule', 'Véhicule') !!}
+                        {{-- {!! Form::label('id_vehicule', 'Véhicule') !!}
                         <select id="id_vehicule" name="id_vehicule">
                             <option value="">Choisir un véhicule</option>
                             @forEach($vehicules as $vehicule)
@@ -63,7 +65,145 @@
                                     <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
                                 @endif
                             @endforeach
-                        </select>
+                        </select> --}}
+
+                        <div class="inline-block p-4 rounded border-2 border-gray-800">
+                            <p class="mb-2">Choisir les véhicules (max 10) :</p>
+                            <div class="mt-2 add-contrat__vehicule-1">
+                                {!! Form::label('id_vehicule_1', 'Véhicule 1') !!}
+                                <select id="id_vehicule_1" name="id_vehicule_1">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @foreach ($contratToVehicules as $contratToVehicule)
+                                            @if ($contratToVehicule->id_contrat == $contrat->id_contrat && $contratToVehicule->id_vehicule == $vehicule->id_vehicule)
+                                                <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                            @else
+                                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-2 hidden">
+                                {!! Form::label('id_vehicule_2', 'Véhicule 2') !!}
+                                <select id="id_vehicule_2" name="id_vehicule_2">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-3 hidden">
+                                {!! Form::label('id_vehicule_3', 'Véhicule 3') !!}
+                                <select id="id_vehicule_3" name="id_vehicule_3">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-4 hidden">
+                                {!! Form::label('id_vehicule_4', 'Véhicule 4') !!}
+                                <select id="id_vehicule_4" name="id_vehicule_4">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-5 hidden">
+                                {!! Form::label('id_vehicule_5', 'Véhicule 5') !!}
+                                <select id="id_vehicule_5" name="id_vehicule_5">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-6 hidden">
+                                {!! Form::label('id_vehicule_6', 'Véhicule 6') !!}
+                                <select id="id_vehicule_6" name="id_vehicule_6">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-7 hidden">
+                                {!! Form::label('id_vehicule_7', 'Véhicule 7') !!}
+                                <select id="id_vehicule_7" name="id_vehicule_7">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-8 hidden">
+                                {!! Form::label('id_vehicule_8', 'Véhicule 8') !!}
+                                <select id="id_vehicule_8" name="id_vehicule_8">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-9 hidden">
+                                {!! Form::label('id_vehicule_9', 'Véhicule 9') !!}
+                                <select id="id_vehicule_9" name="id_vehicule_9">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-10 hidden">
+                                {!! Form::label('id_vehicule_10', 'Véhicule 10') !!}
+                                <select id="id_vehicule_10" name="id_vehicule_10">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span class="inline-block cursor-pointer mt-2 py-2 px-4 text-white bg-green-500 rounded add-contrat__btn-add-vehicule">Ajouter un véhicule</span>
+                        </div>
+
                         <br><br>
                         {!! Form::label('km_avant', 'Km du véhicule avant') !!}
                         {!! Form::number('km_avant', $contrat->km_avant) !!}
