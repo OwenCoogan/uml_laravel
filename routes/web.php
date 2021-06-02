@@ -108,6 +108,10 @@ Route::post('/storeClient', [ClientController::class, 'store'])->middleware(['au
 Route::get('/editClient/{id}', [ClientController::class, 'edit'])->middleware(['auth'])->name('editClient');
 Route::post('/updateClient/{id}', [ClientController::class, 'update'])->middleware(['auth'])->name('updateClient');
 
+
+Route::get('/editVehicule/{id}', [VehiculeController::class, 'edit'])->middleware(['auth'])->name('editVehicule');
+Route::post('/updateVehicule/{id}', [VehiculeController::class, 'update'])->middleware(['auth'])->name('updateVehicule');
+
 // Delete
 Route::get('/deleteClient/{id}', [ClientController::class, 'destroy'])->middleware(['auth'])->name('deleteClient');;
 
