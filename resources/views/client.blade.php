@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <a class="py-2 px-4 rounded border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out" href="{{ url()->previous() }}">Retours</a>
+        <a class="py-2 px-4 rounded border-2 border-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out" href="{{ url()->previous() }}"></a>
         <br><br>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Client N°:{{ $client ->id_client}}
