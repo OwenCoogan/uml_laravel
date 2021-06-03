@@ -28,7 +28,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 vehicule">
+            @if (!empty($vehicule->pointControle))
+
+            <div class="p-6 bg-white border-b border-gray-200 vehicule">
                     <h2><b>Point De controle:</b></h2>
                     <ul>
                         <li>
@@ -39,6 +41,7 @@
 
                     </ul>
                 </div>
+            @endif
             </div>
         </div>
     </div>
