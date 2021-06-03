@@ -47,7 +47,7 @@
                 <div class="dashboard__form-edit-item p-6 bg-white border-b border-gray-200">
                 <h2 style="font-size:26px;margin-bottom:50px">Ajouter un point de contrôle</h2>
                     {!! Form::open(['url' => 'addControle/'.$vehicule->id_vehicule]) !!}
-                    @if (!empty($contrat->employe))
+                    @if (!empty($vehicule->pointControle))
                         {!! Form::label('id_vehicule', 'Vehicule') !!}
                         {!! Form::hidden('id_vehicule', $vehicule ->id_vehicule) !!}
 
