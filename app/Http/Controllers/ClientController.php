@@ -49,7 +49,7 @@ class ClientController extends Controller
         $client->numero_permis = $request->numero_permis;
         $client->save();
 
-        return redirect()->route('clients');
+        return redirect()->route('client', [$client]);
     }
 
     /**
@@ -99,7 +99,7 @@ class ClientController extends Controller
         $client->numero_permis = $request->numero_permis;
         $client->save();
 
-        return redirect()->route('clients');
+        return redirect()->route('client', [$client]);
     }
 
     /**

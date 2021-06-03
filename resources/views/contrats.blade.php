@@ -44,17 +44,104 @@
                         <select id="id_client" name="id_client">
                             <option value="" selected="selected">Choisir un client</option>
                             @forEach($clients as $client)
-                                <option value="{{$client->id_client}}">{{ $client->nom }}</option>
+                                <option value="{{$client->id_client}}">{{ $client->prenom }} {{ $client->nom }}</option>
                             @endforeach
                         </select>
                         <br><br>
-                        {!! Form::label('id_vehicule', 'Véhicule') !!}
-                        <select id="id_vehicule" name="id_vehicule">
-                            <option value="" selected="selected">Choisir un véhicule</option>
-                            @forEach($vehicules as $vehicule)
-                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
-                            @endforeach
-                        </select>
+                        <div class="inline-block p-4 rounded border-2 border-gray-800">
+                            <p class="mb-2">Choisir les véhicules (max 10) :</p>
+                            <div class="mt-2 add-contrat__vehicule-1">
+                                {!! Form::label('id_vehicule_1', 'Véhicule 1') !!}
+                                <select id="id_vehicule_1" name="id_vehicule_1">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-2 hidden">
+                                {!! Form::label('id_vehicule_2', 'Véhicule 2') !!}
+                                <select id="id_vehicule_2" name="id_vehicule_2">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-3 hidden">
+                                {!! Form::label('id_vehicule_3', 'Véhicule 3') !!}
+                                <select id="id_vehicule_3" name="id_vehicule_3">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-4 hidden">
+                                {!! Form::label('id_vehicule_4', 'Véhicule 4') !!}
+                                <select id="id_vehicule_4" name="id_vehicule_4">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-5 hidden">
+                                {!! Form::label('id_vehicule_5', 'Véhicule 5') !!}
+                                <select id="id_vehicule_5" name="id_vehicule_5">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-6 hidden">
+                                {!! Form::label('id_vehicule_6', 'Véhicule 6') !!}
+                                <select id="id_vehicule_6" name="id_vehicule_6">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-7 hidden">
+                                {!! Form::label('id_vehicule_7', 'Véhicule 7') !!}
+                                <select id="id_vehicule_7" name="id_vehicule_7">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-8 hidden">
+                                {!! Form::label('id_vehicule_8', 'Véhicule 8') !!}
+                                <select id="id_vehicule_8" name="id_vehicule_8">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-9 hidden">
+                                {!! Form::label('id_vehicule_9', 'Véhicule 9') !!}
+                                <select id="id_vehicule_9" name="id_vehicule_9">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mt-2 add-contrat__vehicule-10 hidden">
+                                {!! Form::label('id_vehicule_10', 'Véhicule 10') !!}
+                                <select id="id_vehicule_10" name="id_vehicule_10">
+                                    <option value="" selected="selected">Choisir un Véhicule</option>
+                                    @forEach($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <span class="inline-block cursor-pointer mt-2 py-2 px-4 text-white bg-green-500 rounded add-contrat__btn-add-vehicule">Ajouter un véhicule</span>
+                        </div>
                         <br><br>
                         {!! Form::label('km_avant', 'Km du véhicule avant') !!}
                         {!! Form::number('km_avant', '0') !!}
@@ -92,10 +179,23 @@
                                 @if (!empty($contrat->client))
                                     <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
                                 @endif
-                                <!-- Faire l'affichage des véhicules grâce à la table contrat_to_vehicules -->
-                                @if (!empty($contrat->vehicule))
-                                    <p>Véhicule : {{ $contrat->vehicule->nom }} / {{ $contrat->vehicule->immatriculation }} / Km avant : {{ $contrat->km_avant }} / Km après : {{ $contrat->km_apres }}</p>
+
+                                @php
+                                    $nbVehicule = 0
+                                @endphp
+                                @foreach ($contratToVehicules as $contratToVehicule)
+                                    @if ($contratToVehicule->id_contrat === $contrat->id_contrat )
+                                        @php
+                                            $nbVehicule++
+                                        @endphp
+                                    @endif
+                                @endforeach
+                                @if ($nbVehicule > 0)
+                                    <p>Nombre de véhicule loué : {{ $nbVehicule }}</p>
+                                @else
+                                    <p>Aucun véhicule loué</p>
                                 @endif
+                                
                                 <p><span class="font-semibold">Date début du contrat :</span> {{ $contrat->date_debut }} </p>
                                 <p><span class="font-semibold">Date fin du contrat :</span> {{ $contrat->date_fin }} </p>
                                 <div class="inline-flex mt-2">

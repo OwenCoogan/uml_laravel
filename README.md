@@ -7,14 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## How To run  ( Custom by Owen )
+## School project
 
-2 - npm run start
+Projet Laravel réalisé dans un cadre scolaire.
 
-## TO DO 
+Membre de l'équipe : 
+- Gautier Maire
+- Vincent Manachem
+- Owen Coogan
 
-1 - Ecrire les migrations à faire avec les tables ( ex : Migration de la table client déjà faite ) 
+## How To run 
 
-2 - Voir comment ajouter plusieurs élément à un même row en SQL ( genre plusieurs véhicules pour un meme contrat ) 
-
-3 - Créer le formulaire d'édition ( pour vehicule , contrat et client ) 
+```bash
+npm run start
+```

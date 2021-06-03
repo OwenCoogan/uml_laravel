@@ -17,10 +17,22 @@
                     @if (!empty($contrat->client))
                         <p>Client : {{ $contrat->client->nom }} {{ $contrat->client->prenom }}</p>
                     @endif
-                    <!-- Faire l'affichage des véhicules grâce à la table contrat_to_vehicules -->
-                    @if (!empty($contrat->vehicule))
-                        <p>Véhicule : <a href="/vehicule/{{$contrat->vehicule->id_vehicule}}">{{$contrat->vehicule->nom }}</a> / {{ $contrat->vehicule->immatriculation }} / Km avant : {{ $contrat->km_avant }} / Km après : {{ $contrat->km_apres }}</p>
+                    
+                    @php
+                        $nbVehicule = 0;
+                    @endphp
+                    @foreach ($contratToVehicules as $contratToVehicule)
+                        @if ($contratToVehicule->id_contrat === $contrat->id_contrat )
+                            @php
+                                $nbVehicule++;
+                            @endphp
+                            <p>Véhicule {{ $nbVehicule }} : <a href="/vehicule/{{$contratToVehicule->vehicule->id_vehicule}}">{{$contratToVehicule->vehicule->nom }}</a> / {{ $contratToVehicule->vehicule->immatriculation }}</p>
+                        @endif
+                    @endforeach
+                    @if ($nbVehicule == 0)
+                        <p>Aucun véhicule loué</p>
                     @endif
+
                     <p><span class="font-semibold">Date début du contrat :</span> {{ $contrat->date_debut }} </p>
                     <p><span class="font-semibold">Date fin du contrat :</span> {{ $contrat->date_fin }} </p>
                     <div class="inline-flex mt-2">
