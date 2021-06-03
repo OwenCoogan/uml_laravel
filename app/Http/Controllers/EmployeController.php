@@ -35,7 +35,17 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'required',
+            'fonction' => 'required',
+        ]);
+
+        $employe = new Employe;
+        $employe->nom = $request->nom;
+        $employe->fonction = $request->fonction;
+        $employe->save();
+
+        return redirect()->route('employe', [$employe]);
     }
 
     /**
@@ -58,11 +68,8 @@ class EmployeController extends Controller
      */
     public function edit($id)
     {
-        $employe =  Employe::find($id);
-        $employe->employe = $request->employe;
-        $employe->created_at = $request->created_at;
-        $employe->save();
-        return redirect('/employe/$id');
+        $employe = Employe::find($id);
+        return view('editEmploye', ['employe' => $employe]);
     }
 
     /**
@@ -74,7 +81,17 @@ class EmployeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'required',
+            'fonction' => 'required',
+        ]);
+
+        $employe = Employe::find($id);
+        $employe->nom = $request->nom;
+        $employe->fonction = $request->fonction;
+        $employe->save();
+
+        return redirect()->route('employe', [$employe]);
     }
 
     /**
@@ -85,6 +102,9 @@ class EmployeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employe = Employe::find($id);
+        $employe->delete();
+
+        return redirect()->route('employes');
     }
 }

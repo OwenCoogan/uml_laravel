@@ -75,6 +75,15 @@ Route::get('/employes', function () {
 // Read One
 Route::get('/employe/{id}', [EmployeController::class, 'show'])->middleware(['auth'])->name('employe');
 
+// Create
+Route::post('/storeEmploye', [EmployeController::class, 'store'])->middleware(['auth'])->name('storeEmploye');
+
+// Update
+Route::get('/editEmploye/{id}', [EmployeController::class, 'edit'])->middleware(['auth'])->name('editEmploye');
+Route::post('/updateEmploye/{id}', [EmployeController::class, 'update'])->middleware(['auth'])->name('updateEmploye');
+
+// Delete
+Route::get('/deleteEmploye/{id}', [EmployeController::class, 'destroy'])->middleware(['auth'])->name('deleteEmploye');
 
 /***************************
 // Routes > Vehicules

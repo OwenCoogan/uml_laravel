@@ -40,7 +40,7 @@
                         {!! Form::label('image', 'Image') !!}
                         {!! Form::text('image') !!}
                         <br><br>
-                        {!! Form::submit('Nouveau Vehicule') !!}
+                        {!! Form::submit('Nouveau Vehicule', array_merge(['class' => 'py-2 px-4 text-white bg-green-500 rounded'])) !!}
 
                     {!! Form::close() !!}
 

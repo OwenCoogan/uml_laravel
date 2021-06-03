@@ -41,7 +41,7 @@
                         {!! Form::label('numero_permis', 'N° de permis') !!}
                         {!! Form::number('numero_permis', $client->numero_permis) !!}
                         <br><br>
-                        {!! Form::submit('Modifier le Client') !!}
+                        {!! Form::submit('Modifier le Client', array_merge(['class' => 'py-2 px-4 text-white bg-green-500 rounded'])) !!}
 
                     {!! Form::close() !!}
                 </div>

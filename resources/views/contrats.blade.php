@@ -155,7 +155,7 @@
                         {!! Form::label('date_fin', 'Date fin du contrat') !!}
                         {!! Form::date('date_fin', \Carbon\Carbon::now()) !!}
                         <br><br>
-                        {!! Form::submit('Nouveau Contrat') !!}
+                        {!! Form::submit('Nouveau Contrat', array_merge(['class' => 'py-2 px-4 text-white bg-green-500 rounded'])) !!}
 
                     {!! Form::close() !!}
 
