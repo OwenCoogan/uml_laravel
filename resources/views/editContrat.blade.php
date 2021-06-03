@@ -55,41 +55,55 @@
                             @endforeach
                         </select>
                         <br><br>
-                        {{-- {!! Form::label('id_vehicule', 'Véhicule') !!}
-                        <select id="id_vehicule" name="id_vehicule">
-                            <option value="">Choisir un véhicule</option>
-                            @forEach($vehicules as $vehicule)
-                                @if ($contrat->id_vehicule == $vehicule->id_vehicule)
-                                    <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
-                                @else
-                                    <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
-                                @endif
-                            @endforeach
-                        </select> --}}
 
-                        <div class="inline-block p-4 rounded border-2 border-gray-800">
+                        @php
+                            $i = 0;
+                            $vehiculesMatch = array(0,0,0,0,0,0,0,0,0,0);
+                        @endphp
+                        @foreach ($contratToVehicules as $contratToVehicule)
+                            @if ($contratToVehicule->id_contrat == $contrat->id_contrat)
+                                @php
+                                    $vehiculesMatch[$i] = $contratToVehicule->id_vehicule;
+                                    $i++;
+                                @endphp
+                            @else
+                                
+                            @endif
+                        @endforeach
+
+                        <div class="inline-block p-4 rounded border-2 border-gray-800 data-vehicule-count" data-vehicule-count="{{$i}}">
                             <p class="mb-2">Choisir les véhicules (max 10) :</p>
+                            
                             <div class="mt-2 add-contrat__vehicule-1">
                                 {!! Form::label('id_vehicule_1', 'Véhicule 1') !!}
                                 <select id="id_vehicule_1" name="id_vehicule_1">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @foreach ($contratToVehicules as $contratToVehicule)
-                                            @if ($contratToVehicule->id_contrat == $contrat->id_contrat && $contratToVehicule->id_vehicule == $vehicule->id_vehicule)
-                                                <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
-                                            @else
-                                                <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
-                                            @endif
-                                        @endforeach
+                                        @if ($vehiculesMatch[0] == $vehicule->id_vehicule)
+                                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                                        @else
+                                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-2 hidden">
+
+                            @if ($i >= 2)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+                            
+                            <div class="mt-2 add-contrat__vehicule-2 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_2', 'Véhicule 2') !!}
                                 <select id="id_vehicule_2" name="id_vehicule_2">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[1] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -97,12 +111,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-3 hidden">
+
+                            @if ($i >= 3)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-3 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_3', 'Véhicule 3') !!}
                                 <select id="id_vehicule_3" name="id_vehicule_3">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[2] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -110,12 +135,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-4 hidden">
+                            
+                            @if ($i >= 4)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-4 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_4', 'Véhicule 4') !!}
                                 <select id="id_vehicule_4" name="id_vehicule_4">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[3] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -123,12 +159,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-5 hidden">
+                            
+                            @if ($i >= 5)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-5 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_5', 'Véhicule 5') !!}
                                 <select id="id_vehicule_5" name="id_vehicule_5">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[4] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -136,12 +183,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-6 hidden">
+                            
+                            @if ($i >= 6)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-6 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_6', 'Véhicule 6') !!}
                                 <select id="id_vehicule_6" name="id_vehicule_6">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[5] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -149,12 +207,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-7 hidden">
+                            
+                            @if ($i >= 7)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-7 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_7', 'Véhicule 7') !!}
                                 <select id="id_vehicule_7" name="id_vehicule_7">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[6] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -162,12 +231,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-8 hidden">
+                            
+                            @if ($i >= 8)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-8 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_8', 'Véhicule 8') !!}
                                 <select id="id_vehicule_8" name="id_vehicule_8">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[7] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -175,12 +255,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-9 hidden">
+                            
+                            @if ($i >= 9)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-9 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_9', 'Véhicule 9') !!}
                                 <select id="id_vehicule_9" name="id_vehicule_9">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[8] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
@@ -188,12 +279,23 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-2 add-contrat__vehicule-10 hidden">
+                            
+                            @if ($i >= 10)
+                                @php
+                                    $hiddenClass = '';
+                                @endphp
+                            @else
+                                @php
+                                    $hiddenClass = 'hidden';
+                                @endphp
+                            @endif
+
+                            <div class="mt-2 add-contrat__vehicule-10 {{$hiddenClass}}">
                                 {!! Form::label('id_vehicule_10', 'Véhicule 10') !!}
                                 <select id="id_vehicule_10" name="id_vehicule_10">
                                     <option value="" selected="selected">Choisir un Véhicule</option>
                                     @forEach($vehicules as $vehicule)
-                                        @if ($contrat->id_vehicule == $vehicule->id_vehicule)
+                                        @if ($vehiculesMatch[9] == $vehicule->id_vehicule)
                                             <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
                                         @else
                                             <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>

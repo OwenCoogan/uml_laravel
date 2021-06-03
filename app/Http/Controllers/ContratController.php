@@ -66,7 +66,7 @@ class ContratController extends Controller
         
         }
 
-        return redirect()->route('contrats');
+        return redirect()->route('contrat', [$contrat]);
     }
 
     /**
@@ -122,18 +122,23 @@ class ContratController extends Controller
         $contrat->date_fin = $request->date_fin;
         $contrat->save();
 
+        // Reset vehicule
+        $contratToVehicules = ContratToVehicule::where('id_contrat', $id);
+        $contratToVehicules->delete();
+
+        // Save new vehicul(s)
         foreach($request->all() as $key => $value) {
   
             if (str_starts_with($key, 'id_vehicule') && !empty($value)) {
-                // $contratToVehicule = ContratToVehicule::find($value);
-                // $contratToVehicule->id_contrat = $contrat->id_contrat;
-                // $contratToVehicule->id_vehicule = $value;
-                // $contratToVehicule->save();
+                $contratToVehicule = new ContratToVehicule;
+                $contratToVehicule->id_contrat = $contrat->id_contrat;
+                $contratToVehicule->id_vehicule = $value;
+                $contratToVehicule->save();
             }
         
         }
 
-        return redirect()->route('contrat/{$id}');
+        return redirect()->route('contrat', [$contrat]);
     }
 
     /**
