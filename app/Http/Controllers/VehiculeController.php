@@ -48,7 +48,7 @@ class VehiculeController extends Controller
         $vehicule->image = $request->image;
         $vehicule->save();
 
-        return redirect()->route('vehicules');
+        return redirect()->route('vehicule', [$vehicule]);
     }
 
     /**
@@ -96,7 +96,7 @@ class VehiculeController extends Controller
         $vehicule->image = $request->image;
         $vehicule->save();
 
-        return redirect()->route('vehicules');
+        return redirect()->route('vehicule', [$vehicule]);
     }
 
     /**
