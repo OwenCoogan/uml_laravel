@@ -39,7 +39,13 @@
                         {!! Form::date('date_naissance', \Carbon\Carbon::parse($client->date_naissance)->format('Y-m-d')) !!}
                         <br><br>
                         {!! Form::label('numero_permis', 'N° de permis') !!}
-                        {!! Form::number('numero_permis', $client->numero_permis) !!}
+                        {!! Form::text('numero_permis', $client->numero_permis) !!}
+                        <br><br>
+                        {!! Form::label('email', 'Email') !!}
+                        {!! Form::text('email', $client->email) !!}
+                        <br><br>
+                        {!! Form::label('telephone', 'Télephone') !!}
+                        {!! Form::text('telephone', $client->telephone) !!}
                         <br><br>
                         {!! Form::submit('Modifier le Client') !!}
 

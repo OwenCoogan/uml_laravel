@@ -67,6 +67,7 @@
                             </li>
                             <br>
                         @endforeach
+                        {{ $vehicules->links() }}
                     </ul>
                 </div>
             </div>

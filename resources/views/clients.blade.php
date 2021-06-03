@@ -39,8 +39,14 @@
                         {!! Form::label('date_naissance', 'Date de naissance') !!}
                         {!! Form::date('date_naissance') !!}
                         <br><br>
-                        {!! Form::label('numero_permis', 'N* de permis') !!}
-                        {!! Form::number('numero_permis') !!}
+                        {!! Form::label('numero_permis', 'N° de permis') !!}
+                        {!! Form::text('numero_permis') !!}
+                        <br><br>
+                        {!! Form::label('email', 'Email') !!}
+                        {!! Form::text('email') !!}
+                        <br><br>
+                        {!! Form::label('telephone', 'Télephone') !!}
+                        {!! Form::text('telephone') !!}
                         <br><br>
                         {!! Form::submit('Nouveau client') !!}
 
@@ -55,9 +61,12 @@
                     <ul>
                         @forEach($clients as $client)
                             <li>
-                                <a href="/client/{{$client->id_client}}">{{ $client ->prenom}} {{ $client ->nom}}
-                                </a>
+                                <a href="/client/{{$client->id_client}}" class="underline font-bold">Clien N°{{ $client->id_client }}</a>
                                 <br>
+                                <p class="font-bold mt-1">Aperçu du client</p>
+                                <p><span class="font-semibold">Nom/prénom :</span> {{ $client->nom }} / {{ $client->prenom }} </p>
+                                <p><span class="font-semibold">Date de naissance :</span> {{ $client->date_naissance }} </p>
+                                <p><span class="font-semibold">Numéro de permis :</span> {{ $client->numero_permis }} </p>
                                 <div class="inline-flex mt-2">
                                     <a class="py-2 px-4 text-white bg-yellow-500 rounded" href="/editClient/{{$client->id_client}}">Modifier</a>
                                     <a class="py-2 px-4 text-white bg-red-600 rounded ml-2" href="/deleteClient/{{$client->id_client}}">Supprimer</a>
@@ -66,6 +75,7 @@
                             </li>
                             <br>
                         @endforeach
+                        {{ $clients->links() }}
                     </ul>
                 </div>
             </div>

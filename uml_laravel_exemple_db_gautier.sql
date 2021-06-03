@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 02 juin 2021 à 19:55
+-- Généré le : jeu. 03 juin 2021 à 09:09
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -33,20 +33,35 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `nom` varchar(255) COLLATE utf8_bin NOT NULL,
   `prenom` varchar(255) COLLATE utf8_bin NOT NULL,
   `date_naissance` date NOT NULL,
-  `numero_permis` int(11) NOT NULL,
+  `numero_permis` varchar(255) COLLATE utf8_bin NOT NULL,
+  `email` text COLLATE utf8_bin,
+  `telephone` text COLLATE utf8_bin,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_client`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`id_client`, `nom`, `prenom`, `date_naissance`, `numero_permis`, `created_at`, `updated_at`) VALUES
-(1, 'Cash', 'Johnny', '2020-11-10', 123455, '2021-05-18 13:33:00', NULL),
-(2, 'aze', 'rtyui', '2021-05-11', 1212, NULL, NULL),
-(3, 'Test', 'AZERT', '1997-05-03', 12345678, '2021-06-01 19:23:26', '2021-06-01 19:23:26');
+INSERT INTO `clients` (`id_client`, `nom`, `prenom`, `date_naissance`, `numero_permis`, `email`, `telephone`, `created_at`, `updated_at`) VALUES
+(1, 'Cash', 'Johnny', '2020-11-10', '123455', NULL, NULL, '2021-05-18 13:33:00', NULL),
+(2, 'aze', 'rtyui', '2021-05-11', '1212', NULL, NULL, NULL, NULL),
+(3, 'Test', 'AZERT', '1997-05-03', '12345678', NULL, NULL, '2021-06-01 19:23:26', '2021-06-01 19:23:26'),
+(4, 'azertyu', 'azertyu', '1988-04-01', '123456', NULL, NULL, '2021-06-03 05:35:09', '2021-06-03 05:35:09'),
+(5, 'azertyu', 'azertyu', '2018-02-02', '12345678', NULL, NULL, '2021-06-03 05:36:42', '2021-06-03 05:36:42'),
+(6, 'AZERTY', 'QSDFGHJ', '1985-01-01', '8765234', NULL, NULL, '2021-06-03 05:37:14', '2021-06-03 05:37:14'),
+(7, 'test', 'test', '1988-02-02', '76458', NULL, NULL, '2021-06-03 05:37:42', '2021-06-03 05:37:42'),
+(8, 'LKJHGDFGH', 'CVBNFGHJ', '1984-04-03', '8723456', NULL, NULL, '2021-06-03 05:38:03', '2021-06-03 05:38:03'),
+(9, 'oievhfhjvkbdf', 'kfdjbvdfkljbv', '1989-03-02', '98734686', NULL, NULL, '2021-06-03 05:38:28', '2021-06-03 05:38:28'),
+(10, 'eringerbvdfk', 'kf kvdfkvnsdfkjvn', '1989-04-02', '12345678', NULL, NULL, '2021-06-03 05:44:55', '2021-06-03 05:44:55'),
+(11, 'iqrhgigb', 'jdfbldjfkbsd', '1967-04-03', '4987456', NULL, NULL, '2021-06-03 05:45:18', '2021-06-03 05:45:18'),
+(12, 'sdfjnfkhsd', 'sdkfbvsfkjlbv', '1978-02-02', '987625678', NULL, NULL, '2021-06-03 05:46:24', '2021-06-03 05:46:24'),
+(13, 'zrjghzez', 'nslbfgbrlhkjgb', '1994-01-01', '12345678', NULL, NULL, '2021-06-03 05:47:55', '2021-06-03 05:47:55'),
+(14, 'jnafkjng', 'kfjnerafgjklb', '2024-03-02', '12459876', 'kqjdghsdg@mail.fr', '234567890', '2021-06-03 06:34:04', '2021-06-03 06:34:04'),
+(15, 'sdfghjkl', 'sdfghjk', '1988-01-01', '123456789', 'sdfghjkl', '1234567890', '2021-06-03 06:42:13', '2021-06-03 06:42:13'),
+(16, 'Maire', 'Gautier', '1970-01-01', '123456789', 'test2@test.fr', '1234567890', '2021-06-03 07:08:26', '2021-06-03 07:08:44');
 
 -- --------------------------------------------------------
 
@@ -94,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `contrat_to_vehicules` (
   `created_at` date DEFAULT NULL,
   `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `contrat_to_vehicules`
@@ -111,16 +126,16 @@ INSERT INTO `contrat_to_vehicules` (`id`, `id_contrat`, `id_vehicule`, `created_
 (17, 15, 5, '2021-06-02', '2021-06-02'),
 (21, 14, 5, '2021-06-02', '2021-06-02'),
 (23, 12, 2, '2021-06-02', '2021-06-02'),
-(24, 16, 1, '2021-06-02', '2021-06-02'),
-(25, 16, 2, '2021-06-02', '2021-06-02'),
-(26, 16, 5, '2021-06-02', '2021-06-02'),
-(27, 16, 6, '2021-06-02', '2021-06-02'),
-(28, 16, 2, '2021-06-02', '2021-06-02'),
-(29, 16, 2, '2021-06-02', '2021-06-02'),
-(30, 16, 6, '2021-06-02', '2021-06-02'),
-(31, 16, 5, '2021-06-02', '2021-06-02'),
-(32, 16, 1, '2021-06-02', '2021-06-02'),
-(33, 16, 2, '2021-06-02', '2021-06-02');
+(43, 16, 2, '2021-06-03', '2021-06-03'),
+(42, 16, 1, '2021-06-03', '2021-06-03'),
+(41, 16, 1, '2021-06-03', '2021-06-03'),
+(40, 16, 6, '2021-06-03', '2021-06-03'),
+(39, 16, 2, '2021-06-03', '2021-06-03'),
+(38, 16, 2, '2021-06-03', '2021-06-03'),
+(37, 16, 6, '2021-06-03', '2021-06-03'),
+(36, 16, 5, '2021-06-03', '2021-06-03'),
+(35, 16, 2, '2021-06-03', '2021-06-03'),
+(34, 16, 1, '2021-06-03', '2021-06-03');
 
 -- --------------------------------------------------------
 

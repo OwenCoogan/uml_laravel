@@ -206,6 +206,7 @@
                             </li>
                             <br>
                         @endforeach
+                        {{ $contrats->links() }}
                     </ul>
                 </div>
             </div>

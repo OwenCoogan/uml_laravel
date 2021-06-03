@@ -40,6 +40,7 @@ class ClientController extends Controller
             'prenom' => 'required',
             'date_naissance' => 'required',
             'numero_permis' => 'required',
+            'email' => 'email',
         ]);
 
         $client = new Client;
@@ -47,6 +48,8 @@ class ClientController extends Controller
         $client->prenom = $request->prenom;
         $client->date_naissance = $request->date_naissance;
         $client->numero_permis = $request->numero_permis;
+        $client->email = $request->email;
+        $client->telephone = $request->telephone;
         $client->save();
 
         return redirect()->route('client', [$client]);
@@ -90,6 +93,7 @@ class ClientController extends Controller
             'prenom' => 'required',
             'date_naissance' => 'required',
             'numero_permis' => 'required',
+            'email' => 'email',
         ]);
 
         $client = client::find($id);
@@ -97,6 +101,8 @@ class ClientController extends Controller
         $client->prenom = $request->prenom;
         $client->date_naissance = $request->date_naissance;
         $client->numero_permis = $request->numero_permis;
+        $client->email = $request->email;
+        $client->telephone = $request->telephone;
         $client->save();
 
         return redirect()->route('client', [$client]);
