@@ -7,6 +7,7 @@ use App\Http\Controllers\VehiculeController;
 use App\Http\Controllers\HistoriqueController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ContratToVehiculeController;
+use App\Http\Controllers\PointControleController;
 
 use App\Models\Contrat;
 use App\Models\Client;
@@ -14,6 +15,7 @@ use App\Models\Vehicule;
 use App\Models\Historique;
 use App\Models\Employe;
 use App\Models\ContratToVehicule;
+use App\Models\PointControle;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,12 +115,18 @@ Route::get('/clients', function () {
 // Read One
 Route::get('/client/{id}', [ClientController::class, 'show'])->middleware(['auth'])->name('client');
 
+Route::post('/addControle/{id}', [PointControleController::class, 'store'])->middleware(['auth'])->name('addControle');
+
 // Create
 Route::post('/storeClient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeClient');
 
 // Update
 Route::get('/editClient/{id}', [ClientController::class, 'edit'])->middleware(['auth'])->name('editClient');
 Route::post('/updateClient/{id}', [ClientController::class, 'update'])->middleware(['auth'])->name('updateClient');
+
+
+Route::get('/editVehicule/{id}', [VehiculeController::class, 'edit'])->middleware(['auth'])->name('editVehicule');
+Route::post('/updateVehicule/{id}', [VehiculeController::class, 'update'])->middleware(['auth'])->name('updateVehicule');
 
 // Delete
 Route::get('/deleteClient/{id}', [ClientController::class, 'destroy'])->middleware(['auth'])->name('deleteClient');

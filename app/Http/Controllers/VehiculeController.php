@@ -69,9 +69,9 @@ class VehiculeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($primaryKey)
     {
-        $vehicule =  Vehicule::find($id);
+        $vehicule =  Vehicule::find($primaryKey);
         return view('editVehicule', ['vehicule' => $vehicule]);
     }
 
