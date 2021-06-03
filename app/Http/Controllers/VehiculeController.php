@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Vehicule;
+use App\Models\PointsControleToVehicule;
 
 class VehiculeController extends Controller
 {
@@ -60,7 +61,9 @@ class VehiculeController extends Controller
     public function show($primaryKey)
     {
         $vehicule =  Vehicule::find($primaryKey);
-        return view('vehicule', ['vehicule' => $vehicule]);
+        $controlesToVehicules = PointsControleToVehicule::All();
+
+        return view('vehicule', ['vehicule' => $vehicule, 'controlesToVehicules' => $controlesToVehicules ]);
     }
 
     /**

@@ -28,21 +28,29 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            @if (!empty($vehicule->pointControle))
+            <h2><b>Points de Contrôle<b></h2>
+            @php
+                $nbControle = 0
+            @endphp
+            @foreach ($controlesToVehicules as $pointControletoVehicule)
+                        @if ($pointControletoVehicule->id_vehicule === $vehicule->id_vehicule )
 
-            <div class="p-6 bg-white border-b border-gray-200 vehicule">
-                    <h2><b>Point De controle:</b></h2>
-                    <ul>
-                        <li>
-                            <h3>{{ $vehicule->pointControle ->controle_type}}</h3><br>
-                            <p>{{ $vehicule->pointControle ->controle_description}}</p><br>
-                            <p>Employé en charge du contrôle : {{ $vehicule->pointControle ->employe ->nom }}</p>
-                        </li>
 
-                    </ul>
-                </div>
-            @endif
-            </div>
+                            @if (!empty($pointControletoVehicule ->controle->controle_type))
+                                @php
+                                    $nbControle++;
+                                @endphp
+                                <H2>Controle {{ $nbControle}} </h2>
+                                <p>{{ $pointControletoVehicule ->controle->controle_type}}</p>
+                            @endif
+                        @endif
+                    @endforeach
+                    @if ($nbControle == 0)
+                        <p>Aucun contrôles d'état</p>
+                    @endif
+
+
+
         </div>
     </div>
 

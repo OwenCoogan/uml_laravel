@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePointsControleToVehiculeTable extends Migration
+class CreatePointsControleToVehiculesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePointsControleToVehiculeTable extends Migration
      */
     public function up()
     {
-        Schema::create('points_controle_to_vehicule', function (Blueprint $table) {
+        Schema::create('points_controle_to_vehicules', function (Blueprint $table) {
             $table->id();
             $table->integer('id_controle');
             $table->integer('id_vehicule');
@@ -28,6 +28,6 @@ class CreatePointsControleToVehiculeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points_controle_to_vehicule');
+        Schema::dropIfExists('points_controle_to_vehicules');
     }
 }

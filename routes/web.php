@@ -116,7 +116,7 @@ Route::get('/clients', function () {
 Route::get('/client/{id}', [ClientController::class, 'show'])->middleware(['auth'])->name('client');
 
 Route::post('/addControle/{id}', [PointControleController::class, 'store'])->middleware(['auth'])->name('addControle');
-
+Route::post('/updateControle/{id}', [PointControleController::class, 'update'])->middleware(['auth'])->name('addControle');
 // Create
 Route::post('/storeClient', [ClientController::class, 'store'])->middleware(['auth'])->name('storeClient');
 

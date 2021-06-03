@@ -83,7 +83,32 @@ class PointControleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'id_employe' => 'required',
+            'controle_type' => 'required',
+            'controle_description' => 'required'
+        ]);
+
+        $pointControle = new PointControle;
+        $pointControle->id_vehicule = $request->id_vehicule;
+        $pointControle->id_employe = $request->id_employe;
+        $pointControle->controle_type = $request->controle_type;
+        $pointControle->controle_description = $request->controle_description;
+        $pointControle->save();
+
+
+        foreach($request->all() as $key => $value) {
+
+            if (str_starts_with($key, 'id_vehicule') && !empty($value)) {
+                $controleToVehicule = new ControleToVehicule;
+                $controleToVehicule->id_contrat = $contrat->id_contrat;
+                $controleToVehicule->id_vehicule = $value;
+                $controleToVehicule->save();
+            }
+
+        }
+
+        return redirect()->route('vehicules');
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PointsControleToVehicule extends Model
 {
     public function controle(){
-        return $this->belongsTo(Contrat::class , 'id_controle');
+        return $this->belongsTo(PointControle::class , 'id_controle');
     }
 
     public function vehicule(){
