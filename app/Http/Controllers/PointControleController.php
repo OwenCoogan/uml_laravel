@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PointsControle;
+use App\Models\PointControle;
 
 class PointControleController extends Controller
 {
@@ -36,13 +36,12 @@ class PointControleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'id_vehicule' => 'required',
             'id_employe' => 'required',
             'controle_type' => 'required',
             'controle_description' => 'required'
         ]);
 
-        $pointControle = new PointsControle;
+        $pointControle = new PointControle;
         $pointControle->id_vehicule = $request->id_vehicule;
         $pointControle->id_employe = $request->id_employe;
         $pointControle->controle_type = $request->controle_type;

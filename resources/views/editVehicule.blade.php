@@ -48,6 +48,17 @@
                 <h2 style="font-size:26px;margin-bottom:50px">Ajouter un point de contrôle</h2>
                     {!! Form::open(['url' => 'addControle/'.$vehicule->id_vehicule]) !!}
 
+                    @forEach($vehicules as $vehicule)
+                        @if (id_vehicule == $vehicule->id_vehicule)
+                            <option value="{{$vehicule->id_vehicule}}" selected>{{ $vehicule->nom }}</option>
+                        @else
+                            <option value="{{$vehicule->id_vehicule}}">{{ $vehicule->nom }}</option>
+                        @endif
+                    @endforeach
+
+                    {!! Form::label('controle_type', 'Type de Controle') !!}
+                        {!! Form::text('controle_type', $vehicule ->pointControle->controle_type ) !!}
+
                         {!! Form::label('controle_type', 'Type de Controle') !!}
                         {!! Form::text('controle_type', $vehicule ->pointControle->controle_type ) !!}
                         <br><br>

@@ -12,5 +12,9 @@ class PointControle extends Model
         return $this->belongsTo(Employe::class , 'id_employe');
     }
 
+    public function vehicules(){
+        return $this->belongsTo(Vehicule::class , 'id_vehicule');
+    }
+
     use HasFactory;
 }
